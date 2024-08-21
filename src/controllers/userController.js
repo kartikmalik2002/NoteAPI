@@ -45,7 +45,7 @@ const signin = async (req , res) => {
         return res.status(400).json({message : "Invalid Credentials"});
        }
 
-        const token = jwt.sign({email : existingUser.email , id : existingUser._id} , SECRET_KEY);
+        const token = jwt.sign({email : existingUser.email , id : existingUser._id} , process.env.SECRET_KEY);
         res.status(200).json({user : existingUser , token : token});
 
     } catch (error) {
